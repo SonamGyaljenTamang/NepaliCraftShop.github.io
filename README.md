@@ -1,2 +1,2 @@
-https://nepalicraftshop.github.io/
-Profile
+https://nepaliCraftShop.github.io/
+
