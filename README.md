@@ -1,2 +1,2 @@
-https://nepaliCraftShop.github.io/
+https://NepaliCraftShop.github.io/
 
