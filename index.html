@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nepali Craft Karlsruhe</title>
+  <meta name="description" content="Authentic, modern Nepali craftsmanship with tasteful presentation and transparent sourcing in Karlsruhe." />
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --paper: #fffaf4;
+      --ink: #2f241c;
+      --muted: #6f6055;
+      --accent: #9a3f2f;
+      --accent-2: #c89a5a;
+      --line: #e7d9c7;
+      --shadow: 0 12px 30px rgba(47, 36, 28, 0.08);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f9f4ec 0%, #f6efe4 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(249, 244, 236, 0.88);
+      border-bottom: 1px solid rgba(231, 217, 199, 0.9);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-tag {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .card,
+    .contact-box {
+      background: rgba(255, 250, 244, 0.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(200, 154, 90, 0.16);
+      color: #7a5523;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { line-height: 1.12; margin: 0 0 16px; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      max-width: 12ch;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .point {
+      background: rgba(247, 241, 232, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .point strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .point span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      min-height: 100%;
+    }
+
+    .tile {
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 160px;
+      display: flex;
+      align-items: end;
+      justify-content: start;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.42));
+    }
+
+    .tile span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tile.large {
+      grid-column: span 2;
+      min-height: 220px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    .grid-3, .grid-2, .products {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .products { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .card p, .card li, .muted {
+      color: var(--muted);
+    }
+
+    .product-card {
+      background: rgba(255, 250, 244, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, rgba(200, 154, 90, 0.35), rgba(154, 63, 47, 0.25));
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      font-size: 2rem;
+    }
+
+    .product-body {
+      padding: 18px;
+    }
+
+    .price {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .story {
+      background: linear-gradient(135deg, rgba(154, 63, 47, 0.08), rgba(200, 154, 90, 0.12));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .checklist {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .checklist li { margin-bottom: 10px; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-box {
+      padding: 24px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      padding: 30px 0 56px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .products,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-title">Nepali Craft Karlsruhe</span>
+        <span class="brand-tag">Authentic craft, curated for modern living</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#story">Story</a>
+        <a href="#sourcing">Sourcing</a>
+        <a href="#visit">Visit</a>
+        <a class="btn btn-secondary" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Launching soon in Karlsruhe</div>
+          <h1>Authentic Nepali craftsmanship for modern homes.</h1>
+          <p class="lead">
+            A calm, curated collection of Nepali textiles, brassware, carved furniture, prayer wheels, thangka reproductions, and contemporary artisan goods — presented with warmth, clarity, and transparent sourcing.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Join the launch list</a>
+            <a class="btn btn-secondary" href="#collection">View the collection</a>
+          </div>
+          <div class="hero-points">
+            <div class="point">
+              <strong>Handcrafted feel</strong>
+              <span>Thoughtful décor and everyday pieces selected for beauty and function.</span>
+            </div>
+            <div class="point">
+              <strong>Transparent sourcing</strong>
+              <span>Modern artisan goods and clearly labeled reproductions, never mystery stock.</span>
+            </div>
+            <div class="point">
+              <strong>Made for gifting</strong>
+              <span>Giftable textiles, warm materials, and statement pieces for stylish spaces.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mosaic">
+            <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80');"><span>Textiles</span></div>
+            <div class="tile" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80');"><span>Brassware</span></div>
+            <div class="tile large" style="background-image:url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80');"><span>Curated décor with a warm Nepali story</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collection">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Collection</div>
+            <h2>What you’ll find</h2>
+          </div>
+          <p>Built for a soft launch: a balanced range of small gifts, home décor, spiritual-lifestyle goods, and premium anchor pieces.</p>
+        </div>
+
+        <div class="products">
+          <article class="product-card">
+            <div class="product-image">🧣</div>
+            <div class="product-body">
+              <h3>Textiles</h3>
+              <p>Scarves, shawls, runners, cushion covers, and throws with handmade texture.</p>
+              <div class="price">€8–€45</div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-image">🪔</div>
+            <div class="product-body">
+              <h3>Brassware</h3>
+              <p>Decorative bowls, lamps, incense holders, and warm metallic accents.</p>
+              <div class="price">€18–€120</div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-image">🕉️</div>
+            <div class="product-body">
+              <h3>Prayer wheels &amp; décor</h3>
+              <p>Thoughtfully presented spiritual-lifestyle goods for calm interiors.</p>
+              <div class="price">€25–€95</div>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-image">🪵</div>
+            <div class="product-body">
+              <h3>Carved furniture</h3>
+              <p>Selected benches, stools, cabinets, and statement pieces in limited quantities.</p>
+              <div class="price">€150–€1,100</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container grid-2">
+        <div class="story">
+          <div class="eyebrow">Brand story</div>
+          <h2>Not a souvenir shop. Not an antique dealer.</h2>
+          <p class="muted">
+            This concept brings Nepali craftsmanship into contemporary German homes through tasteful presentation, honest labeling, and a mix of giftable, decorative, and premium pieces.
+          </p>
+          <p class="muted">
+            The focus is on modern artisan goods, vintage-style décor, textiles, prayer wheels, thangka reproductions, carved furniture, brassware, and clearly described handmade products.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Why customers will remember it</h3>
+          <ul class="checklist">
+            <li>A warm visual identity that feels calm, elevated, and welcoming.</li>
+            <li>Clear product language with no confusing “antique” claims.</li>
+            <li>A balance of small impulse gifts and larger statement pieces.</li>
+            <li>An ethical, transparent sourcing story that builds trust.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sourcing">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Transparent sourcing</div>
+            <h2>How the collection is selected</h2>
+          </div>
+          <p>Everything is presented as contemporary handicraft, decorative object, or clearly labeled reproduction, with a focus on cultural respect and traceability.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>What we focus on</h3>
+            <p>Modern artisan goods, decorative home pieces, textiles, and well-documented handcrafted furniture.</p>
+          </div>
+          <div class="card">
+            <h3>What we avoid</h3>
+            <p>Undocumented antiques, archaeological-style pieces, and unclear sacred or heritage objects.</p>
+          </div>
+          <div class="card">
+            <h3>What this means</h3>
+            <p>Better trust, better margins, and fewer legal headaches — while keeping the collection beautiful and authentic.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container grid-2">
+        <div class="card">
+          <div class="eyebrow">Launching locally</div>
+          <h2>Karlsruhe first, then online</h2>
+          <p class="muted">The launch plan is designed around a small physical presence, local discovery, and simple online access.</p>
+          <ul class="checklist">
+            <li>Small showroom or boutique-style shop in Karlsruhe</li>
+            <li>Instagram-first product storytelling</li>
+            <li>Simple e-commerce for easy browsing and pre-orders</li>
+            <li>Pop-ups, launch events, and local collaborations</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Perfect for</div>
+          <h2>Homes, gifts, and meaningful spaces</h2>
+          <p class="muted">Ideal for customers who love handmade interiors, ethical sourcing, warm materials, and design with story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact">
+        <div class="contact-box">
+          <div class="eyebrow">Get in touch</div>
+          <h2>Join the launch list</h2>
+          <p class="muted">Use this section for early access, launch invites, or wholesale and collaboration enquiries.</p>
+          <p><strong>Email:</strong> hello@yourshopname.com</p>
+          <p><strong>Instagram:</strong> @yourshopname</p>
+          <p><strong>Location:</strong> Karlsruhe, Germany</p>
+        </div>
+
+        <div class="contact-box">
+          <form onsubmit="event.preventDefault(); alert('Thanks — your message form is a placeholder for now. Connect it later with Formspree, Netlify Forms, or your email.');">
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Your email" required />
+            <textarea placeholder="Tell us what you’re interested in"></textarea>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Nepali Craft Karlsruhe</span>
+      <span>Authentic Nepali craft, curated for modern living.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
